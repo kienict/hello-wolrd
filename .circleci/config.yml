@@ -1,35 +1,29 @@
 version: 2.1
 
 jobs:
-  save-hello-world-output:
+  save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run:
-          name: "Save Hello World Output"
-          command: "echo 'Text to output here!' > output.txt"
+      - run: echo "hello world" > ~/output.txt
       - presist_to_workspace:
-        root:
-          - /tmp/udacity
+        root: ~/
         paths:
-          - demo/demo01
+          - output.txt
 
-  print-output-file:
+  print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - checkout
-      - run:
-        name: "Print Output File"
-        command: "cat output.txt"
       - attach_workspace:
-        at: /tmp/udacity/demo/demo01
+        at: ~/
+      - run: cat ~/output.txt
 
 workflows:
-  say-hello-workflow:
+  my-work-flow:
     jobs:
-      - save-hello-world-output
-      - print-output-file
-    requires:
-      - save-hello-world-output
+      - save_hello_world_output
+      - print_output_file
+      requires:
+        - save_hello_world_output
