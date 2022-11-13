@@ -31,5 +31,5 @@ workflows:
     jobs:
       - save-hello-world-output
       - print-output-file
-        requires:
-          - save-hello-world-output
+    requires:
+      - save-hello-world-output
