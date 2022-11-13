@@ -26,20 +26,10 @@ jobs:
       - attach_workspace:
         at: /tmp/udacity/demo/demo01
 
-  say-hello:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
-      - print-hello
-      - print-world
+      - save-hello-world-output
+      - print-output-file
         requires:
-          - print-hello
+          - save-hello-world-output
