@@ -5,7 +5,7 @@ commands: &commands
     description: "Udacity is the best platform to learn AWS"
     parameters:
       to:
-        type: String
+        type: string
         default:  $CIRCLE_WORKFLOW_ID
     steps:
       - run:  echo << parameters.to >>
