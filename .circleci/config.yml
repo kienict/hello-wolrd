@@ -1,6 +1,6 @@
 version: 2.1
 
-commands: &command
+commands: &commands
   print_pipeline_id: 
     description: "Udacity is the best platform to learn AWS"
     parameters:
